@@ -1,6 +1,5 @@
 package com.pk.main;
 
-
 import com.pk.entities.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,7 +10,6 @@ public class App {
     public static void main(String[] args) {
 
         User user1 = new User();
-        user1.setId(1);
         user1.setName("John");
         user1.setEmail("john@gmail.com");
         user1.setPassword("1234");
@@ -41,6 +39,7 @@ public class App {
 
             // if any error occurs it will rollback the transaction
             transaction.rollback();
+            e.printStackTrace();
         }
     }
 }

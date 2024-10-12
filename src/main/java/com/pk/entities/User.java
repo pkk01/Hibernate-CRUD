@@ -1,19 +1,17 @@
 package com.pk.entities;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "user_table")
 public class User {
 
     // while using hibernate we must add a unique entity
     // @Id annotation for primary key
     @Id
-
+    // generates values for ID automatically
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     // @Column annotation for all columns
     @Column
     private long id;
