@@ -11,7 +11,7 @@ public class User {
     // @Id annotation for primary key
     @Id
     // generates values for ID automatically
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     // @Column annotation for all columns
     @Column
     private long id;
@@ -73,5 +73,17 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", gender='" + gender + '\'' +
+                ", city='" + city + '\'' +
+                '}';
     }
 }
