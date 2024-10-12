@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/hibernate_db</property>
+
+        <!-- using run configuration the username and password are provided-->
+        <property name="connection.username">${db.username}</property>
+        <property name="connection.password">${db.password}</property>
+
+        <!-- to automatically fires ddl commands-->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- to show sql queries that hibernate fires-->
+        <property name="show_sql">true</property>
+
+        <mapping class="com.pk.entities.User"/>
+    </session-factory>
+</hibernate-configuration>
