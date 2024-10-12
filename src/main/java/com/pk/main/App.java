@@ -57,18 +57,47 @@ public class App {
 //        }
 
         //--------------select Operation------------
-        try {
-            // to get the user of id = 1 from User.class
-            User user1 = session.get(User.class, 2L);
-            if (user1 != null) {
-                System.out.println(user1);
-            } else {
-                System.out.println("User not found");
-            }
+//        try {
+//            // to get the user of id = 1 from User.class
+//            User user1 = session.get(User.class, 2L);
+//            if (user1 != null) {
+//                System.out.println(user1);
+//            } else {
+//                System.out.println("User not found");
+//            }
+//
+//        } catch (Exception e) {
+//            // here transaction.rollback() is not need because we are just getting the values
+//            // it is required in insert, update and delete operations only.
+//            e.printStackTrace();
+//        }
 
+        // ------------Update Operation-------------------//
+
+        // if we don't use session it will update all the values not just one
+        // if we don't provide values then it will chnage to NULL to all
+        User user = session.get(User.class, 1L);
+        user.setCity("Hyderabad");
+
+        try {
+
+            // to perform CRUD operation on user1
+            // saveOrUpdate/ update we can use for update the values
+
+            // in case of saveOrUpdate
+            // if id = 3 is present in the table --> update
+            // if not --> save
+
+            session.saveOrUpdate(user);
+            // to commit the changes in the database
+            transaction.commit();
+
+            System.out.println("user Updated successfully");
         } catch (Exception e) {
-            // here transaction.rollback() is not need because we are just getting the values
-            // it is required in insert, update and delete operations only.
+
+            // if any error occurs it will rollback the transaction
+            System.out.println("user failed to update");
+            transaction.rollback();
             e.printStackTrace();
         }
     }
